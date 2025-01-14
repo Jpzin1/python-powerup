@@ -4,6 +4,7 @@ import pandas
 import pyautogui
 import time
 
+# Uma pausa para executar todos os comandos
 pyautogui.PAUSE = 0.5
 
 # pyautogui.click -> clicar
@@ -31,8 +32,8 @@ pyautogui.press("enter")
 # Pedir para o computador esperar 3 segundos
 time.sleep(3)
 
-#Passo 2: Fazer login
-pyautogui.click(x=-1039, y=377)
+# Passo 2: Fazer login
+pyautogui.click(x=835, y=374)
 pyautogui.write("joaocostadf5@gmail.com")
 
 pyautogui.press("tab") # passa para o campo da senha
@@ -42,7 +43,7 @@ pyautogui.press("tab") # passa para o botão de login
 pyautogui.press("enter")
 
 
-#Passo 3: Importar a base de dados dos produtos
+# Passo 3: Importar a base de dados dos produtos
 # pip install pandas openpyxl
 
 tabela = pandas.read_csv("produtos.csv")
@@ -52,17 +53,17 @@ print(tabela)
 
 time.sleep(2)
 
-#Passo 4: Cadastrar um produto
+# Passo 4: Cadastrar um produto
 
 for linha in tabela.index:
-    pyautogui.click(x=-1083, y=256) # clica no primeiro campo
+    pyautogui.click(x=847, y=258) # clica no primeiro campo
 
     # codigo
     codigo = tabela.loc[linha, "codigo"]
     pyautogui.write(str(codigo))
     pyautogui.press("tab")
 
-    # marca
+    # marca2    
     marca = tabela.loc[linha, "marca"]
     pyautogui.write(str(marca))
     pyautogui.press("tab")
@@ -87,7 +88,7 @@ for linha in tabela.index:
     pyautogui.write(str(custo))
     pyautogui.press("tab")
 
-    #obs 
+    # obs 
     obs = str(tabela.loc[linha, "obs"])
 
     if obs != "nan":
@@ -103,7 +104,7 @@ for linha in tabela.index:
     pyautogui.scroll(10000) # scroll na tela
 
 
-#Passo 5: Repetir o passo 4 até acabar todos os produtos
+# Passo 5: Repetir o passo 4 até acabar todos os produtos
 
 # nan = valor vazio em base de dados
 # Not a number
